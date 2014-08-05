@@ -14,10 +14,6 @@ Follow the on-screen prompts to either view past recommendations or add a new on
 
   * Ruby 2.1.1
 
-## Contributors
-
-Rachel Self
-
 # License
 
 The MIT License (MIT)
