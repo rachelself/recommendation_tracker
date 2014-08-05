@@ -1,4 +1,4 @@
-#recommendation_tracker
+#RecTrack
 
 Command line app for tracking recommendations from friends.
 
