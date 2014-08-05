@@ -15,9 +15,9 @@
 ## Tracker enters a new category
 
 As a tracker
-In order to better organize my recommendations
+In order to better organize my recommendations,
 I want to enter a new category to track recommendations by.
-Usage: ./rectrack add "Books"
+Usage: `./rectrack add "Books"`
 
 Acceptance Criteria:
 * This builds on the all categories screen
@@ -28,8 +28,8 @@ Acceptance Criteria:
 
 As a tracker
 In order to review my recommendations
-I want to read the entries for a particular category
-Usage: ./rectrack "1"
+I want to read the entries for a particular category.
+Usage: `./rectrack "1"`
 
 Acceptance Criteria:
 * Tracker navigates through categories and selects one (via it's display number) to view it's entries
@@ -39,9 +39,9 @@ Acceptance Criteria:
 ## Tracker adds a new entry
 
 As a tracker
-In order to remember a specific new recommendation
+In order to remember a specific new recommendation,
 I want to enter a new entry for that category.
-Usage: ./rectrack "1" "add"
+Usage: `./rectrack "1" "add"`
 
 Acceptance Criteria:
 * This builds on the category details screen
@@ -53,7 +53,7 @@ Acceptance Criteria:
 As a tracker
 In order to manage my recommendations having been taken or not,
 I want to mark a recommendation entry as "fulfilled".
-Usage: ./rectrack "1" "1" "y"
+Usage: `./rectrack "1" "1" "y"`
 
 Acceptance Criteria:
 * This builds on the entry details screen
@@ -65,12 +65,12 @@ Acceptance Criteria:
 
 As a tracker
 In order to review recommendations with more specificity,
-I want to enter a friend's name as filter criteria to narrow the entries displayed for a category
-Usage: ./rectrack "1" "FILTER" "Jenna"
+I want to enter a friend's name as filter criteria to narrow the entries displayed for a category.
+Usage: `./rectrack "1" "FILTER" "Jenna"`
 
 Acceptance Criteria:
 * This builds on the category details screen
 * User is prompted with "Enter the menu item number to review an entry, or type ADD to add a new entry, or type FILTER to narrow the results."
 * User is prompted with "Which friend would you like to find recommendations from? (first name)"
   * If there are more than one records by that first name, prompt "What's your friend's last name?"
-  * 
+  * Entries are displayed that contain that user ID
