@@ -67,7 +67,7 @@ I want to enter a new entry.
 
 `A Tale of Two Cities` => user is prompted with "Who recommended this to you? (first name)"
 
-`Jenna` => if a record for Jenna exists in the database, user is prompted with "Is one of these the right Jenna?" and prints out that record(s) with display numbers
+`Jenna` => if a record for Jenna exists in the database, user is prompted with "Is one of these the right friend?" and prints out that record(s) with display numbers
 
 `1` => user is prompted with "Add a short note about this recommendation."
 
@@ -81,7 +81,7 @@ I want to enter a new entry.
   * valid if a string
 * User enters valid input for first name of friend
    * valid if a string
-* If a record is found in the database for that friend, user will be prompted with "Is one of these the right #{friend}?"
+* If a record is found in the database for that friend, user will be prompted with "Is one of these the right friend?"
   * valid input is a digit corresponding to the menu display numbers
 * User is prompted with "Add a short note about this recommendation."
   * valid input is a string
