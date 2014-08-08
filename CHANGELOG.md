@@ -1,5 +1,9 @@
 # Changelog
 
+## August 8, commit 4
+* updated Rakefile to include migration tasks!
+* first migration for categories
+
 ## August 8, commit 3
 * Started a CHANGELOG
 * touch rectrack
