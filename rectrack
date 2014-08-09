@@ -12,4 +12,4 @@ end
 puts IO.readlines('rec.txt')
 
 categories_controller = CategoriesController.new()
-categories_controller.add
+categories_controller.list
