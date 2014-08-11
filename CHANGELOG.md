@@ -1,7 +1,11 @@
 # Changelog
 
+## August 11, commit 6
+* integration tests for adding entries
+* integration tests for entry menu
+
 ## August 9, commit 5
-* finished integration tests for adding categories
+* integration tests for adding categories
 
 ## August 8, commit 4
 * updated Rakefile to include migration tasks!
