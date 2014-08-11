@@ -45,6 +45,6 @@ class EntriesController
   private
 
   def entries
-    entries ||=Entry.all
+    entries ||=@origin_category.entries
   end
 end

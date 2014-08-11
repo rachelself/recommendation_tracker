@@ -1,4 +1,4 @@
-RSpec.describe "RecTrack Main Menu" do
+RSpec.describe "RecTrack Main Menu", :integration do
   context "Prints a menu" do
 #     it "shows fancy hexagon art" do
 #       actual = run_rectrack_with_input()
@@ -36,20 +36,23 @@ RSpec.describe "RecTrack Main Menu" do
       end
     end
 
-    context "normal commands" do
-      let(:actual){ run_rectrack_with_input() }
+    # context "normal commands" do
+    #   let(:actual){ run_rectrack_with_input() }
+    context "correct input" do
+      let!(:category1){ Category.create(name: "Books") }
+      let!(:category2){ Category.create(name: "Movies") }
+      let!(:category3){ Category.create(name: "Places to Visit") }
+      let(:output){ run_rectrack_with_input }
 
       it "should print the list of categories" do
-        Category.create(name: "Books")
-        Category.create(name: "Movies")
-        Category.create(name: "Places to Visit")
-        # actual = run_rectrack_with_input()
+        # output = `./rectrack`
         expected = "1. Books\n" +
                    "2. Movies\n" +
                    "3. Places to Visit\n"
-        expect(actual).to include(expected)
+        expect(output).to include(expected)
       end
     end
+
 
   end
 end

@@ -1,5 +1,9 @@
 # Changelog
 
+## August 11, commit 7
+* fixed main menu spec finally
+* removed friend from adding entries for now
+
 ## August 11, commit 6
 * integration tests for adding entries
 * integration tests for entry menu

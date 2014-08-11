@@ -7,10 +7,10 @@ RSpec.describe "Viewing the entry menu", :integration do
     let(:output){ run_rectrack_with_input('2') } #Music
 
     before do
-      Entry.create(name: "Snowmine", category: category2)
-      Entry.create(name: "Antrim Dells", category: category2)
-      Entry.create(name: "Epice", category: category1)
-      Entry.create(name: "The Smiling Elephant", category: category1)
+      Entry.create!(name: "Snowmine", category: category2, note: "Trevor listened")
+      Entry.create!(name: "Antrim Dells", category: category2, note: "These guys were at Mason's 21st bday")
+      Entry.create!(name: "Epice", category: category1, note: "Yum")
+      Entry.create!(name: "The Smiling Elephant", category: category1, note: "Yum but beware cockroaches")
     end
 
     it "should include the name of the category being viewed" do
@@ -21,6 +21,14 @@ RSpec.describe "Viewing the entry menu", :integration do
       expected = "1. Snowmine\n" +
                  "2. Antrim Dells\n"
       expect(output).to include(expected)
+    end
+
+    it "should save 2 categories" do
+      expect(Category.count).to eq(2)
+    end
+
+    it "should save 4 entries" do
+      expect(Entry.count).to eq(4)
     end
 
     it "shouldn't list the entries in other categories" do
