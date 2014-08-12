@@ -1,5 +1,12 @@
 # Changelog
 
+# August 12, commit 12
+* unit tests for friend
+* cleaned up unit tests for category and entry
+
+# August 12, commit 11
+* unit tests for entry
+
 # August 12, commit 10
 * unit tests for category
 

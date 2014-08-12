@@ -16,7 +16,6 @@ RSpec.describe Entry do
   end
 
   context "validating format" do
-    let!(:category){ Category.create(name: "Books") }
     let!(:entry){ Entry.create(name: "jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj") }
 
     it "should have an appropriate error message" do
