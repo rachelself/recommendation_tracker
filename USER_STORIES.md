@@ -3,11 +3,11 @@
 
 # Features
 * View all categories
-* Enter new category to track
+* Enter new category
 * View entries in the category
-* Add new entries to the category
-* Mark an entry as fulfilled
-* Find entries by friend
+* Add a new entry to the category
+* Filter entries by friend
+* View entry details
 
 # Stories
 
@@ -21,17 +21,19 @@ I want to enter a new recommendations category.
 
 `./rectrack` => user sees list of all categories with display numbers
 
-`add` => user is prompted with "What category would you like to add?"
+`ADD` => user is prompted with "What category would you like to add?"
 
 `Books` => screen displays: "Books has been added as a new category"
 
 **Acceptance Criteria:**
 * This builds on the categories screen
-* User enters `add`
+* User enters `ADD`
 * User is prompted with "What category would you like to add?"
 * User enters valid input for their category name
   * valid if it is not a duplicate
   * valid if input is a string
+  * valid if input contains letters
+  * valid if length is less than 30 characters
 * The category is recorded in the category model
 
 ## Tracker views a category's entries
@@ -51,11 +53,11 @@ I want to see the entries for a particular category.
 * Displays the category being reviewed
 * Displays the entries for that category
 
-## Tracker adds a new entry
+## Tracker adds a new entry for a friend already in the database
 
 As a tracker,
 in order to remember a specific new recommendation,
-I want to enter a new entry.
+I want to add a new entry.
 
 **Usage:**
 
@@ -63,35 +65,33 @@ I want to enter a new entry.
 
 `1` => user sees list of all entries for that category and is prompted with "Enter the menu item number to view an entry, type ADD to make a new entry, or type FILTER to narrow your results."
 
-`add` => user is prompted with "What is the title of your entry (name of the restaurant, title of the book, etc)"
+`ADD` => user is prompted with "What is the title of your entry (name of the restaurant, title of the book, etc)"
 
-`A Tale of Two Cities` => user is prompted with "Who recommended this to you? (first name)"
+`A Tale of Two Cities` => user is prompted with "Write a short note about this recommendation."
 
-`Jenna` => if a record for Jenna exists in the database, user is prompted with "Is one of these the right friend?" and prints out that record(s) with display numbers
+`An amazing book Jenna read in 8th grade` => user is prompted with "Which friend recommended this to you?", a menu of friends to choose from, and instructions: "Select from the menu below, or type ADD if the friend isn't listed."
 
-`1` => user is prompted with "Add a short note about this recommendation."
+`1` => prints "A Tale of Two Cities has been added to the database."
 
-`An amazing book Jenna read in 8th grade` => prints "A Tale of Two Cities has been added to the database."
 
 **Acceptance Criteria:**
 * This builds on the category details screen
 * User enters display number of category
-* User enters `add` to create a new entry
+* User enters `ADD` to create a new entry
 * User enters valid input for name of the entry
   * valid if a string
-* User enters valid input for first name of friend
-   * valid if a string
-* If a record is found in the database for that friend, user will be prompted with "Is one of these the right friend?"
-  * valid input is a digit corresponding to the menu display numbers
-* User is prompted with "Add a short note about this recommendation."
+  * valid if length is less than 30 characters
+* User is prompted with "Write a short note about this recommendation."
   * valid input is a string
+* User is prompted to choose a friend off the menu (via its display number) or type ADD to create a new one
+  * valid input is a digit corresponding to the menu display numbers
 * Entry is recorded in the entries model
 
-## Tracker edits an existing entry
+## Tracker adds a new entry for a friend that is NOT in the database
 
-As a tracker who has previously used the app,
-in order to manage my recommendations,
-I want to edit a specific entry.
+As a tracker,
+in order to remember a specific new recommendation,
+I want to add a new entry for a friend who hasn't made recommendations to me previously.
 
 **Usage:**
 
@@ -99,25 +99,53 @@ I want to edit a specific entry.
 
 `1` => user sees list of all entries for that category and is prompted with "Enter the menu item number to view an entry, type ADD to make a new entry, or type FILTER to narrow your results."
 
-`1` => user is prompted with "Type EDIT to make changes to this entry or BACK to go back"
+`ADD` => user is prompted with "What is the title of your entry (name of the restaurant, title of the book, etc)"
 
-`EDIT` => user is prompted with a menu with display number for items to edit.
+`Perelandra` => user is prompted with "Write a short note about this recommendation."
 
-`1` => Please enter a new #{name} for the entry
+`An amazing book Jenna read in 8th grade` => user is prompted with "Which friend recommended this to you?", a menu of friends to choose from, and instructions: "Select from the menu below, or type ADD if the friend isn't listed."
 
-`Great Expectations` => user is prompted with "Great Expectations has been added to the database."
+`ADD` => user is prompted with "What is your friend's name?"
+
+`Pete` => prints "Perelandra has been added to the database."
+
 
 **Acceptance Criteria:**
 * This builds on the category details screen
 * User enters display number of category
-* User enters the display number of the entry
-* User enters `EDIT`
-* User enters the display number of the item to edit
-* User enters valid input
-   * valid if a string
+* User enters `ADD` to create a new entry
+* User enters valid input for name of the entry
+  * valid if a string
+  * valid if length is less than 30 characters
+* User is prompted with "Write a short note about this recommendation."
+  * valid input is a string
+* User is prompted to choose a friend off the menu (via its display number) or type ADD to create a new one
+  * valid input is a string
+  * valid input is length less than 30 characters
+  * valid input must contain letters
 * Entry is recorded in the entries model
 
-## Tracker filters category entries by friend
+
+## Tracker views an entry
+
+As a tracker who has previously used the app,
+in order to review my recommendations,
+I want to view a specific entry.
+
+**Usage:**
+
+`./rectrack` => user sees list of all categories with display numbers
+
+`1` => user sees list of all entries for that category and is prompted with "Enter the menu item number to view an entry, type ADD to make a new entry, or type FILTER to narrow your results."
+
+`1` => prints the entry details
+
+**Acceptance Criteria:**
+* This builds on the entry details screen
+* User enters display number of category
+* User enters the display number of the entry
+
+## Tracker filters entries by friend
 
 As a tracker who has previously used the app,
 in order to review recommendations with more specificity,
@@ -129,17 +157,17 @@ I want to enter a friend's name as filter criteria.
 
 `1` => user sees list of all entries for that category and is prompted with "Enter the menu item number to view an entry, type ADD to make a new entry, or type FILTER to narrow your results."
 
-`FILTER` => user is prompted with "What is the first name of the friend who made the recommendation?"
+`FILTER` => user is prompted with "Which friend would you like to filter by?" and a menu of friends to choose from.
 
-`Jenna` => If there are records for that name, print out the records with menu display numbers and prompt "Are any of these the correct Jenna?"
+`1` => If there are entries by that friend under that category, print out the entries with menu display numbers.
 
-`1` => prints menu of entries containing that friend ID
+`1` => prints the details of that entry
 
 **Acceptance Criteria:**
 * This builds on the category details screen
 * User enters display number of category
 * User enters `FILTER`
-* User is prompted to enter the first name of a friend to filter by
-  * valid input is a string
-* User is prompted to enter a menu display number for the correct friend to filter by
+* User is prompted to choose a friend from the menu
+  * valid input is a digit corresponding to the menu
+* User is prompted choose from the entries.
   * valid input is a digit corresponding to the menu
