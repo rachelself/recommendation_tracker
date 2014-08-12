@@ -1,5 +1,9 @@
 # Changelog
 
+# August 12, commit 13
+* integration tests for filtering by friend
+* integration tests for the friends menu
+
 # August 12, commit 12
 * unit tests for friend
 * cleaned up unit tests for category and entry

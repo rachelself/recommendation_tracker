@@ -22,13 +22,7 @@ class Router
     when /\d+/
       entries_controller.view(command.to_i)
     when "FILTER"
-      puts "========================================="
-      # puts "Select from the menu below."
-      # puts "What friend would you like to filter by?"
-      # puts "========================================="
-      # friends_controller.show_all
-      # friend = clean_gets
-      # entries_controller.filter(friend)
+      entries_controller.friends_menu
     end
   end
 

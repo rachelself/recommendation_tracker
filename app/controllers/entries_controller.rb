@@ -1,5 +1,7 @@
 class EntriesController
 
+  attr_reader :origin_category
+
   LINES = "=============="
   ENTRY_INSTRUCTIONS = "** type ADD to create a new entry // FILTER to see entries by the friend **"
   ADD_FRIEND_INSTRUCTIONS = "Select from the menu below, or type ADD if the friend isn't listed."
@@ -92,6 +94,41 @@ class EntriesController
     else
       puts "Sorry, entry #{path_number} doesn't exist. Please select from the menu above or ADD a new entry."
     end
+  end
+
+  def friends_menu
+    puts LINES
+    puts "What friend would you like to filter by?"
+    puts LINES
+    all_friends = friends
+    puts
+    all_friends.each_with_index do |friend, index|
+      puts "#{index + 1}. #{friend.name}"
+    end
+
+    friend_selection = clean_gets
+    friend = find_friend_by_id(friend_selection)
+    filter(friend)
+  end
+
+  def filter(friend)
+    entries = Entry.where(category: @origin_category, friend: friend)
+
+    if entries.empty?
+      puts "Your friend #{friend.name} hasn't made any recommendations in the #{@origin_category.name} category."
+    else
+      puts "#{entries.count} entries found for #{friend.name} in the #{@origin_category.name} category!"
+      print_results(friend, entries)
+      entries.each_with_index do |entry, index|
+        puts "#{index + 1}. #{entry.name}"
+      end
+    end
+  end
+
+  def print_results(friend, entries)
+    puts LINES
+    puts "#{@origin_category.name.upcase} RECOMMENDATIONS BY #{friend.name.upcase}"
+    puts LINES
   end
 
   private

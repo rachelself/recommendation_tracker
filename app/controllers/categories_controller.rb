@@ -1,5 +1,6 @@
 class CategoriesController
 
+
   LINES = "=============="
   CATEGORY_INSTRUCTIONS = "** type ADD to create a new category **"
   NO_CATEGORIES = "You have no categories yet."
