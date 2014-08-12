@@ -62,10 +62,10 @@ class EntriesController
     end
 
     command = clean_gets
-    get_input(command)
+    get_friend_name(command)
   end
 
-  def get_input(command)
+  def get_friend_name(command)
     case command
     when "ADD"
       puts "What's your friend's name?"
@@ -101,12 +101,17 @@ class EntriesController
     puts "What friend would you like to filter by?"
     puts LINES
     all_friends = friends
-    puts
     all_friends.each_with_index do |friend, index|
       puts "#{index + 1}. #{friend.name}"
     end
 
     friend_selection = clean_gets
+
+    if friend_selection.to_i > all_friends.count || friend_selection.to_i <= 0
+      puts "Sorry, friend #{friend_selection} doesn't exist. Please choose a friend off existing menu."
+      return
+    end
+
     friend = find_friend_by_id(friend_selection)
     filter(friend)
   end
@@ -122,6 +127,7 @@ class EntriesController
       entries.each_with_index do |entry, index|
         puts "#{index + 1}. #{entry.name}"
       end
+      Router.navigate_entries_menu(self)
     end
   end
 

@@ -1,5 +1,8 @@
 # Changelog
 
+# August 12, commit 14
+* added a few filter_by_friend tests for edge case errors
+
 # August 12, commit 13
 * integration tests for filtering by friend
 * integration tests for the friends menu
