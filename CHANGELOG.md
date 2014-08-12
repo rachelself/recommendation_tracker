@@ -1,5 +1,10 @@
 # Changelog
 
+# August 12, commit 8
+* finalized adding entry by including friend column
+* finalized entry_menu_spec and add_entry_spec with friend
+* add a new friend or choose an existing one from menu
+
 ## August 11, commit 7
 * fixed main menu spec finally
 * removed friend from adding entries for now
