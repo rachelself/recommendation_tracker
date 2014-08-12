@@ -1,5 +1,11 @@
 class EntriesController
 
+  LINES = "=============="
+  ENTRY_INSTRUCTIONS = "** type ADD to create a new entry // FILTER to see entries by the friend **"
+  ADD_FRIEND_INSTRUCTIONS = "Select from the menu below, or type ADD if the friend isn't listed."
+  FRIEND_ERROR = "No friend found by that ID. Please re-type or ADD to create new."
+  NO_ENTRIES = "You have no entries for this category."
+
   def initialize(origin_category)
     @origin_category = origin_category
     if @origin_category.name.ends_with?("s")
@@ -24,17 +30,17 @@ class EntriesController
   end
 
   def list
-    puts "=============="
+    puts LINES
     puts "#{@origin_category.name.upcase} ENTRIES"
-    puts "=============="
-    puts "** type ADD to create a new entry // FILTER to see entries by the friend **"
+    puts LINES
+    puts ENTRY_INSTRUCTIONS
 
     if entries.count > 0
       entries.each_with_index do |entry, index|
         puts "#{index + 1}. #{entry.name}"
       end
     else
-      puts "You have no entries for this category."
+      puts NO_ENTRIES
     end
 
     Router.navigate_entries_menu(self)
@@ -43,7 +49,7 @@ class EntriesController
   def prompt_for_friend
     puts "What friend made this recommendation?"
     puts "Select from the menu below, or type ADD if the friend isn't listed."
-    puts "======================================="
+    puts LINES
 
     if friends
       friends.each_with_index do |friend|
@@ -77,7 +83,7 @@ class EntriesController
     entry = entries[path_number - 1]
     if entry
       puts "#{entry.name.upcase}\n"
-      puts "===================\n"
+      puts LINES + "\n"
       puts "NOTE:\n"
       puts "#{entry.note}\n"
       puts "\n"
@@ -101,7 +107,7 @@ class EntriesController
   def find_friend_by_id(id)
     friend = Friend.where(id: id).first
     if friend.blank?
-      puts "No friend found by that ID. Please re-type or ADD to create new."
+      puts FRIEND_ERROR
     else
       friend
     end

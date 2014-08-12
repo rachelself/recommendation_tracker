@@ -11,7 +11,7 @@ RSpec.describe "Viewing an entry", :integration do
 
     it "should print out the details for an entry" do
       expected = "MY NEIGHBOR TOTORO\n"+
-                 "===================\n"+
+                 "==============\n"+
                  "NOTE:\n"+
                  "The best ever\n"+
                  "\n"+

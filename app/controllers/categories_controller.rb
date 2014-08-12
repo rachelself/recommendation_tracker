@@ -1,5 +1,9 @@
 class CategoriesController
 
+  LINES = "=============="
+  CATEGORY_INSTRUCTIONS = "** type ADD to create a new category **"
+  NO_CATEGORIES = "You have no categories yet."
+
   def add
     puts "What category would you like to add?"
     name = clean_gets
@@ -12,17 +16,17 @@ class CategoriesController
   end
 
   def list
-    puts "=============="
+    puts LINES
     puts "CATEGORIES"
-    puts "=============="
-    puts "** type ADD to create a new category **"
+    puts LINES
+    puts CATEGORY_INSTRUCTIONS
     if categories
       categories.each_with_index do |category, index|
         puts "#{index + 1}. #{category.name}"
       end
       Router.navigate_categories_menu(self)
     else
-      puts "You have no categories yet."
+      puts NO_CATEGORIES
     end
   end
 
