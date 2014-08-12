@@ -1,5 +1,8 @@
 # Changelog
 
+# August 12, commit 9
+* integration tests for viewing entries
+
 # August 12, commit 8
 * finalized adding entry by including friend column
 * finalized entry_menu_spec and add_entry_spec with friend

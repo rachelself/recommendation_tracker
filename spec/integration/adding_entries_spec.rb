@@ -1,7 +1,6 @@
 RSpec.describe "Adding entries to a category", :integration do
 
   context "valid input" do
-    # pending
     let!(:category1){ Category.create(name: "Movies") }
     let!(:category2){ Category.create(name: "Foods") }
     let!(:friend1){ Friend.create(name: "MaRisa Jackson") }

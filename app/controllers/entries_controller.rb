@@ -73,6 +73,21 @@ class EntriesController
     end
   end
 
+  def view(path_number)
+    entry = entries[path_number - 1]
+    if entry
+      puts "#{entry.name.upcase}\n"
+      puts "===================\n"
+      puts "NOTE:\n"
+      puts "#{entry.note}\n"
+      puts "\n"
+      puts "RECOMMENDED BY:\n"
+      puts "#{entry.friend.name}"
+    else
+      puts "Sorry, entry #{path_number} doesn't exist. Please select from the menu above or ADD a new entry."
+    end
+  end
+
   private
 
   def entries
