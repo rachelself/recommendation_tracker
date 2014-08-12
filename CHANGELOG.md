@@ -1,5 +1,8 @@
 # Changelog
 
+# August 12, commit 10
+* unit tests for category
+
 # August 12, commit 9
 * integration tests for viewing entries
 
